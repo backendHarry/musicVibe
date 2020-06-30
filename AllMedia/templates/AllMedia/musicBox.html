@@ -1,0 +1,242 @@
+{% extends 'AllMedia/base_media.html' %}
+
+{% load pwa %}
+
+{% load static %}
+
+{% block head %}
+{% progressive_web_app_meta %}
+{% endblock %}
+
+{% block title %}
+<title>Music Plyalist</title>
+{% endblock %}
+
+
+{% block styleLink %}
+<link rel="stylesheet" type="text/css" href="{% static 'AllMedia/assets/css/musicbox.css' %}">
+{% endblock %}
+
+<!-- start normal html code from  here -->
+
+    {% block search %}
+        <div class="show-search">
+            <input type="search" placeholder="search" name='q'>
+            <div class="cancel-and-btn">
+                <i class="search-close fas fa-times"></i>
+                <input type="submit" value="search">
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block searchMobileView %}
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+        </div>
+
+        <div class="search">
+            
+        </div>
+    {% endblock %}
+
+
+{% block content %}
+
+    <div class="background-wall-player">
+
+        <div id="main">
+            <i class="dropdown-btn-arrow-down fas fa-arrow-down"></i>
+            <i class="dropdown-btn-arrow fas fa-arrow-up"></i>
+            <div id="songTitle"></div>
+
+            <div class="image">
+                <img src="{% static 'AllMedia/assets/img/person_1.jpg' %}">
+            </div>
+
+            <div id="player">
+
+                <div id="seek-bar">
+                    <div id="fill" type="range" max='100' value="32"></div>
+                    <div id="handle"></div>
+                </div>
+
+                <div class="buttons">
+                    <button id='pre'><i class ='fa fa-arrow-left'></i></button>
+                    <button id='play'><i class ='fas fa-pause'></i></button>
+                    <button id='next' ><i class ='fa fa-arrow-right'></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+<main>
+    <div class="main-heading">
+        <h2 class="header-title">Music Box</h2>
+    </div>
+    {% if files %}
+    <div class="music-box-list">
+        {% for file in files %}
+        <li class="music-playing-list">
+            <div class="music-image-name">
+
+                <span class="music-img"><img src="{% static 'AllMedia/assets/img/person_1.jpg' %}"></span>
+
+                <span class="music-name">{{file.name}}</span>
+
+
+            </div>
+            <div class='settings'>
+                <a href="{% url 'AllMedia:delete' file.id %}"><i class="delete-music fas fa-trash"></i></a>
+            </div>
+        </li>
+        {% endfor %}
+    </div>
+    {%else%}
+        <h1 class="no-music-files">you have no music file(s) on  server </h1>
+        <a href="{% url 'AllMedia:create' %}" class="submit-check btn-create">Create here</a>
+    {% endif %}
+</main>
+
+<!-- stop html tags and write jquery code here -->
+<!-- for some cases i will add my jquery file here to let jquery run first before code-->
+<!-- can be added at the beginning but i prefer here for easy reference to my js codes -->
+<script src="{% static 'AllMedia/assets/js/jquery-3.4.1.min.js' %}"></script>
+
+<!-- js code -->
+
+<script>
+
+    let state={
+        'musics':[], // a list for musics url to enable to play
+        'keys': [] //names used as keys to interact with frontend and backend 
+    }
+
+    let URL = 'musicPlayList'
+    $.ajax({
+        method:'GET',
+        url:URL,
+        success:function(response){
+
+            for(let i in response){
+                let keys = Object.keys(response[i])[0]
+                let values = Object.values(response[i])[0]
+
+                state.keys.push(keys)
+                state.musics.push(values)
+            }
+            buildMusic();
+ }
+});
+
+    function buildMusic(){
+        // code for music playing
+
+    let songs=state.musics
+
+    let songTitle = document.getElementById('songTitle'); // getting all html elements basic DOM
+    let fillBar = document.getElementById('fill');
+
+    var currentSong = 0 //initializing it as 0 to enable first music to play
+    var song= new Audio() //instance of audio 
+    song.src = songs[currentSong]; //initial song source is the first song on list
+
+    let songtext = state.keys[currentSong] //for song title for better ux 
+    songTitle.innerText = songtext
+
+    btn = document.querySelector('#play i')
+    btn.className = 'fas fa-play'
+
+    // play element from list
+    element_list = document.querySelectorAll('.music-name');
+    play_btn = document.getElementById('play');
+
+
+    element_list.forEach(item =>{
+        item.addEventListener('click', nextElementInList); //allowing all my musics to be clicked and played
+    })
+
+
+        function playElementInList(e){
+
+                if(song.paused){
+                song.play();
+                btn.className = 'fas fa-pause'
+            }
+        }
+
+
+        function nextElementInList(e){
+
+        element_list = Array.from(element_list) //converting to an array
+
+        currentSong = state.keys.indexOf(e.target.textContent) //using state.keys coz it has same text with html and also has a one to one index with the music url
+        
+        song.src = songs[currentSong] //using index to get the song to play 
+        song.play()
+
+
+        let songtext = state.keys[currentSong]
+        songTitle.innerText = songtext
+
+        btn = document.querySelector('#play i')
+        btn.className = 'fas fa-pause'
+    }
+
+
+    play_btn.addEventListener('click', playOrPauseSong)
+
+    function playOrPauseSong(){
+        if(song.paused){
+            song.play();
+            btn.className = 'fas fa-pause'
+        }else{
+            song.pause();
+            btn = document.querySelector('#play i')
+            btn.className = 'fas fa-play'
+        }
+
+    }
+
+
+    song.addEventListener('timeupdate', function(){
+    let position = song.currentTime / song.duration;
+    fillBar.style.width = + position*100 + '%';
+})
+
+    play_btn = document.getElementById('next');
+    play_btn.addEventListener('click', next)
+
+    // codes when using button to navigate down here
+
+    function next(){
+        currentSong++;
+        if(currentSong > songs.length -1){
+            currentSong = 0;
+        }
+        song.src = songs[currentSong]
+        song.play()
+        songTitle.textContent= state.keys[currentSong]
+        btn = document.querySelector('#play i')
+        btn.className = 'fas fa-pause'
+    }
+
+    pre_btn = document.getElementById('pre');
+    pre_btn.addEventListener('click', pre)
+
+    function pre(){
+        currentSong--;
+        if(currentSong < 0){
+            currentSong = songs.length -1 ;
+        }
+        song.src = songs[currentSong];
+        song.play()
+        songTitle.textContent= state.keys[currentSong]
+        btn = document.querySelector('#play i')
+        btn.className = 'fas fa-pause'
+    }
+}
+
+
+</script>
+<script src="{% static 'AllMedia/assets/js/musicbox.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+
+{% extends 'accounts/base_account.html' %}
+
+{% load static %}
+
+{% block title %}
+    Login here
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/assets/css/login.css' %}">
+{% endblock %}
+
+    {% block login_signup %}
+        <a href="{% url 'accounts:register' %}"><button class="btn-log-in">Create Account</button ></a>
+    {%endblock%}
+
+{% block content %}
+
+    <main>
+        <div class="form-text">
+            <h1 class="account-text">Log In</h1>
+        </div>
+
+        <div class="form">
+            <form method='POST'>
+                {% csrf_token %}
+                {{form.non_field_errors}}
+                <div class="fieldwrapper">
+                   {{form.username}}
+                </div>
+
+                <div class="fieldwrapper">
+                   {{form.password}}
+                </div>
+            <button class="submit" type="submit">login</button>
+        </form>
+        <a href="{% url 'accounts:reset_password' %}" ><button class="submit">forgot password?</button></a>
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'AllMedia/base_media.html' %}
+
+{% load pwa %}
+
+{% load static %}
+
+{% block head %}
+{% progressive_web_app_meta %}
+{% endblock %}
+
+
+{% block title %}
+<title>Confirm delete</title>
+{% endblock %}
+
+
+{% block styleLink %}
+<link rel="stylesheet" type="text/css" href="{% static 'AllMedia/assets/css/delete_confirm.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <form method='POST'>{% csrf_token %}
+            <div class="form-text">
+                <h1 class="account-text">delete!</h1>
+            </div>
+
+            <div class="delete-confirmation">
+                <p style="margin:2rem 0;">Are you sure?</p>
+                <div class="log-btns">
+                <button class="btn-log-in" type="submit" name="quit">delete</button>
+                <a  class="btn-log-in" href="{% url 'AllMedia:musicBox' %}">Cancel here</a>
+                </div>
+            </div>
+        </form>
+    </main>
+
+{% endblock %}

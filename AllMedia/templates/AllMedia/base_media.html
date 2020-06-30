@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en">
+<head>
+    {% block head %}{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block title %} {%endblock%}
+    <link rel="stylesheet" type="text/css" href="{% static 'AllMedia/assets/css/fontawesome-all.min.css' %}">
+    <link rel="shortcut icon " href="#">
+    {% block styleLink %} {%endblock%}
+</head>
+    <header>
+        <form method='GET' action="{% url 'AllMedia:musicBox' %}">
+        {% block search %}
+        
+        {% endblock %}
+        <nav>
+            <div class="logo">
+                <div class="logo-text">
+                    <a href="{% url 'AllMedia:musicBox' %}"><h6>Music<span class="plus">
+                            <i class="fas fa-plus"></i>
+                        </span></h6>
+                    </a>
+                </div>
+            </div>
+
+            {% block searchMobileView %}
+                
+            {% endblock %}
+
+            <div class="menu-icons open">
+                <i class="fas fa-bars btn-open"></i>
+            </div>
+
+            <ul class="nav-list">
+                <div class="menu-icons close">
+                    <i class="fas fa-times btn-close"></i>
+                </div>
+
+                <li class="nav-item">
+                    <a href="{% url 'AllMedia:create' %}" class="nav-link">uploads</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'AllMedia:musicBox' %}" class="nav-link">Mbox</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'accounts:change-password' %}" class="nav-link">password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </form>
+</header>
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

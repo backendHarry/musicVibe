@@ -1,0 +1,56 @@
+{% extends 'AllMedia/base_media.html' %}
+{% load static %}
+
+
+
+    {% block title %}
+    <title>Create PlayList</title>
+    {% endblock %}
+
+
+    {% block styleLink %}
+    <link rel="stylesheet" type="text/css" href="{% static 'AllMedia/assets/css/create.css' %}">
+    {% endblock %}
+
+    {% block search %}
+        <div class="show-search">
+            <input type="search" placeholder="search" name='q'>
+            <div class="cancel-and-btn">
+                <i class="search-close fas fa-times"></i>
+                <input type="submit" value="search">
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block searchMobileView %}
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+        </div>
+
+        <div class="search">
+            
+        </div>
+    {% endblock %}
+
+    {% block content %}
+        <main>
+            <div class="list-uploads">
+                <form method='POST' enctype="multipart/form-data" name='uploadform'>{% csrf_token %}
+                    <div class="create-new-upload">
+                        {{form.files}}
+                        <button id="fileSelect" type='button'>Create New Upload <i class="add fas fa-plus">     </i></button>
+                    </div>
+                        {% if objects.file.is_exist %}
+                            <p>file alredy exists</p>
+                        {% else %}
+                        <ul class="all-items">
+
+                        </ul>
+                        {% endif %}
+                        <button class='submit-list'>save</button>
+                </form>
+            </div>
+        </main>
+<script src="{% static 'AllMedia/assets/js/create.js' %}"></script>
+
+    {% endblock %}

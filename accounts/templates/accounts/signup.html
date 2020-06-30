@@ -1,0 +1,49 @@
+{% extends 'accounts/base_account.html' %}
+{% load static %}
+
+{% block title %}
+    Create an Account
+{%endblock%}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/assets/css/signup.css' %}">
+{% endblock %}
+
+{% block login_signup %}
+    <a href="{% url 'accounts:login' %}"><button class="btn-log-in">Login</button ></a>
+{%endblock%}
+
+{% block content %}
+
+    <main>
+        <div class="form-text">
+            <h1 class="account-text">Account Details</h1>
+        </div>
+
+        <div class="form">
+            <form method = 'POST'>
+            {% csrf_token %}
+            {% for non_field in form_user.non_field.errors %}
+                {{non_field}}
+            {%endfor%}
+            {% for field in form_user %}
+                <div class="fieldwrapper">
+                    {{field.errors}}
+                    {{field}}
+                </div>
+            {%endfor%}
+            <div class="select">
+                {% for name, value in form_profile.fields.musicType.choices %}
+                    <div class="option">
+                        <input type="radio" id="{{name}}" name="musicType" value="{{name}}" required>
+                        <label for="{{name}}">{{value}}</label>
+                    </div><br>
+                {%endfor%}
+            </div>
+            <button class="submit" type="submit">SignUp</button>
+        </form>
+        </div>
+    </main>
+
+{% endblock %}
+

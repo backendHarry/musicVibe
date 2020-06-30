@@ -1,0 +1,682 @@
+/* primary color: #D96868 */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+img{
+    width:100%;
+    height: 100%;
+}
+
+button{
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+a{
+    text-decoration:none;
+}
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    background:#101010;
+    width:95%;
+    margin:auto;
+    color:white;
+    position:relative;
+}
+/* heeader */
+header{
+    width:100%;
+    height:5rem;
+}
+
+/* logo */
+.logo-text{
+    width:8rem;
+}
+
+.logo-text h6{
+    color:#D96868;
+    font-weight:100;
+    font-size:3rem;
+    position:relative;
+}
+
+ .plus{
+    position:absolute;
+    top:0;
+    color:white;
+    right: 0;
+    font-size:1.5rem;
+    font-weight: 100;
+}
+/* end of logo */
+
+nav{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:1rem 0;
+}
+
+.nav-list{
+    width:50%;
+    height:100vh;
+    background:#D96868;
+    position:fixed;
+    top:0;
+    right:-26rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1500;
+    transition:all 0.4s ease;
+    flex-direction:column;
+    list-style:none;
+}
+
+.nav-list.active{
+    right:0;
+}
+
+.open{
+    cursor:pointer;
+}
+
+.close{
+    position: absolute;
+    top:1rem;
+    left:1.5rem;
+    font-size:1.5rem;
+    cursor:pointer;
+}
+.nav-item{
+    margin:1.5rem 0;
+    font-size:1.5rem;
+}
+
+.nav-item a:hover{
+    color:black;
+}
+
+a{
+    color:white;
+}
+
+/* end of hamburger mobile menu */
+
+.search-bar{
+    background:#D96868;
+    padding:0.5rem;
+    border-radius:5rem;
+    color:white;
+}
+
+
+/* search functionality from the top */
+
+.search-field{
+    display:none;
+}
+
+.submit-check{
+    display: none;
+}
+
+.show-search{
+    position:absolute;
+    top:-10rem;
+    transition:all 0.5s ease;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    height:4rem;
+    border-bottom:1px solid white;
+}
+
+.show-search.active{
+    top:0;
+} 
+
+.show-search input[type="search"]{
+    background:none;
+    font-size: 1.3rem;
+    border:none;
+    color:white;
+    width:auto;
+    outline:none;
+    height:1rem;
+    padding:0.5rem 0;
+}
+
+
+.cancel-and-btn{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:50%;
+    margin-right:2rem;
+}
+
+.show-search input[type="submit"]{
+    color:white;
+    background:#D96868;
+    width:5rem;
+    padding:0.4rem;
+    border:none;
+    overflow:hidden;
+    font-size:1rem;
+    border-radius:0.3rem;
+} 
+
+/* end of all nav */
+
+main{
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    width:100%;
+}
+
+
+/*style for no-music-file message*/
+
+.no-music-files{
+    color:#D96868;
+    margin-top:8rem;
+    font-size:2rem;
+    font-weight:400;
+    text-align:center;
+}
+
+.btn-create{
+    margin-top:2rem;
+    background:#D96868;
+    font-size:1.5rem;
+    padding:0.4rem;
+    font-weight:500;
+    border-radius:0.3rem;
+}
+
+/*end*/
+
+/*to show music when played*/
+
+.show-me{
+    z-index:1000;
+    position:fixed;
+    width:100vw;
+    background:#D96868;
+    bottom:0;
+    /*height:5rem;*/
+    height: 90vh;
+    left:0;
+}
+
+.show-me.active{
+    height:90vh;
+}
+
+
+
+.show-me img{
+    position:relative;
+}
+
+.buttons-play{
+    position:absolute;
+    z-index:1100;
+    background:rgba(217, 104, 104, 0.6);
+    bottom:0;
+    height:4rem;
+    width:100%;
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.buttons-play button{
+    background:none;
+    border:none;
+    font-size:1.5rem;
+}
+
+
+
+.btn-down{
+    position: absolute;
+    z-index:1100;
+    font-size:1rem;
+    background:#D96868;
+    color:white;
+    outline:none;
+    border:none;
+    border-radius:0.5rem;
+    right:0.5rem;
+    top:0.5rem;
+    padding:0.5rem;
+}
+
+
+/*stop show-me*/
+
+.music-box-list{
+    width:100%;
+    margin-top:3rem;
+}
+
+.music-img img{
+    height:3.5rem;
+    width:4rem;
+    margin-right:1rem;
+    padding-top:0.2rem;
+}
+
+
+.music-playing-list{
+    background:#1C1919;
+    width:auto;
+    height:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:0.5rem auto;
+    cursor: pointer;
+}
+
+.music-playing-list:hover{
+    background:#000;
+}
+
+.music-image-name{
+    display:flex;
+    width:100%;
+    align-items:center;
+    flex:1;
+    margin-right:1rem;
+}
+
+.music-name{
+    margin-left:2rem;
+    flex:1;
+    margin-left:auto;
+}
+
+.settings{
+    margin-right:0rem;
+    color:#D96868;
+}
+
+.settings a{
+    color:#D96868;
+}
+
+.settings a:hover{
+    cursor:pointer;
+    color:#af2020;
+}
+
+.background-wall-player{
+    position:fixed;
+    z-index:999;
+    height:6rem;
+    width:100vw;
+    background:#D96868;
+    bottom:0;
+    left:0;
+    transition: all 0.3s ease;
+}
+
+.background-wall-player.active-background{
+    position:fixed;
+    z-index:999;
+    height:95vh;
+    width:100vw;
+    background:#D96868;
+    left:0;
+}
+
+#seek-bar{
+    width:100%;
+    height:4px;
+    background-color:white;
+    display:flex;
+    border-radius:50px;
+    cursor:pointer;
+    position:fixed;
+    bottom:3.5rem;
+}
+
+#fill{
+    height:0.3rem !important;
+    background-color:rgb(138, 43, 43);
+}
+
+#handle{
+    width:8px;
+    height:8px;
+    background-color:rgb(138, 43, 43);
+    border-radius:50%;
+    margin-left:0.3rem;
+    transform:scale(2);
+}
+
+
+.dropdown-btn-arrow {
+   font-size:1.5rem;
+   position:absolute;
+   right:1rem;
+   z-index:998;
+   margin:0rem 0;
+   color:#D96868;
+   background:white;
+   padding:0.5rem;
+   border-radius:50%;
+}
+
+
+.dropdown-btn-arrow.active{
+    font-size:1.5rem;
+   position:absolute;
+   right:1rem;
+   z-index:999;
+   background:white;
+   padding:0.3rem;
+   border-radius:50%;
+}
+
+.dropdown-btn-arrow-down{
+    font-size:1.5rem;
+   position:absolute;
+   right:1rem;
+   z-index:998;
+   margin:0rem 0;
+   color:#D96868;
+   background:white;
+   padding:0.5rem;
+   border-radius:50%;
+}
+
+.dropdown-btn-arrow-down.active{
+    font-size:1.5rem;
+   position:absolute;
+   right:1rem;
+   z-index:999;
+   background:white;
+   padding:0.3rem;
+   border-radius:50%;
+}
+
+#songTitle{
+    margin:0.5rem 0;
+    text-align:left;
+}
+.image{
+    /*height:80vh;
+    height:10rem;*/
+    display:none;
+    z-index:800;
+}
+
+.image.active{
+    height:80vh !important;
+    height:10rem;
+    display:block;
+}
+
+.buttons{
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+    margin-top:1.5rem;
+    z-index:900;
+}
+
+.buttons.active{
+    margin-top:2rem;
+}
+
+#play{
+    font-size:1rem;
+    padding:0.5rem;
+    border:0;
+    outline:none;
+    border-radius:50%;
+    color:black;
+}
+
+#next, #pre{
+    font-size:1rem;
+    padding:0.2rem;
+    border:0;
+    outline:none;
+    border-radius:50%;
+    color:black;
+    background:none;
+}
+
+
+
+@media screen and (min-width:900px){
+    header{
+        height:8rem;
+    }
+
+    .nav-list{
+        width:initial;
+        height:initial;
+        background-color:transparent;
+        position:initial;
+        top:initial;
+        right:initial;
+        flex-direction:row;
+        transition:initial;
+    }
+
+    .search-bar{
+        display:none;
+    }
+
+    .search-bar i{
+        display:none;
+    }
+
+    .search{
+        display:flex;
+    }
+
+    .submit-check{
+        color:white;
+        background:#D96868;
+        border:none;
+        font-size:1rem;
+        padding:0.3rem 0.6rem;
+        height:auto;
+        border-radius:0.5rem;
+        margin-left:0.5rem;
+        cursor:pointer;
+        display:block;
+    }
+
+    .submit-check:hover{
+        color:#D96868;
+        background:white;
+    }
+
+    /* for wide screen */
+
+    .search-field{
+        background:none;
+        border:1px solid #D96868;
+        font-size:1rem;
+        padding:1rem;
+        border-radius:1rem;
+        color:white;
+        outline:none;
+        height:0.5rem;
+        display:inline-block;
+    }
+
+    .menu-icons{
+        display:none;
+    }
+
+    .nav-item{
+        margin:0 2rem;
+        list-style:none;
+        position:relative;
+    }
+
+    .nav-item a:hover{
+        color:white;
+    }
+
+    .nav-link{
+        color:#D96868;
+        font-size:1.3rem;
+        transition:0.3s all ease;
+        font-weight:400;
+    }
+
+    .nav-link::before{
+        content:'';
+        background:#D96868;
+        width:0;
+        height:0.2rem;
+        position:absolute;
+        bottom:0;
+        left:0;
+        top:2.5rem;
+        transition: 0.3s all ease;
+         
+    }
+
+    .nav-link:hover::before{
+            width:100%;
+        }
+
+    .settings{
+    margin-right:2rem;
+    }
+
+    /* end of all nav */
+
+main{
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    width:100%;
+    position: relative;
+}
+
+/*to show music when played*/
+
+.background-wall-player{
+    background:#101010;
+    min-height: 10vh;
+}
+
+.background-wall-player.active-background{
+    background:#000;
+    z-index:1600;
+}
+
+#main{
+    width:25%;
+    background-color: white;
+    border-radius: 15px;
+    position: absolute;
+    top:0;
+    height:100vh;
+    left:50%;
+    transform: translateX(-50%);
+    z-index:999;
+}
+
+
+
+#image img{
+    height:180px;
+    width:100%;
+    margin-top:-5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#player{
+    padding:0.8rem 0 2rem 0;
+    color:#333;
+    background:#D96868;
+}
+
+#songTitle{
+    font-family:monospace;
+    text-align:left;
+    font-size:1.5rem;
+    position:absolute;
+    top:0;
+    color:black;
+}
+
+#buttons{
+    font-size:2rem;
+    position:relative;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align:center;
+}
+
+
+
+#play{
+    font-size:1rem;
+    padding:0.5rem;
+    border:0;
+    background-color:rgb(138, 43, 43);
+    outline:none;
+    border-radius:50%;
+}
+
+#next, #pre{
+    font-size:1rem;
+    padding:0.2rem;
+    border:0;
+    background-color:rgb(138, 43, 43);
+    outline:none;
+    border-radius:50%;
+}
+
+
+#seek-bar{
+    color:white;
+    position: absolute !important;
+    bottom:8rem;
+
+}
+
+#fill{
+    height:0.3rem !important;
+    background-color:rgb(138, 43, 43);
+}
+
+#handle{
+    width:8px;
+    height:8px;
+    background-color:rgb(138, 43, 43);
+    border-radius:50%;
+    margin-left:-5px;
+    transform:scale(2);
+}
+
+
+/*stop show-me*/
+
+
+}

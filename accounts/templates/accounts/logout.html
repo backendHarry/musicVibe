@@ -1,0 +1,27 @@
+{% extends 'accounts/base_account.html' %}
+{% load static %}
+
+{% block title %}
+    Log Out
+{%endblock%}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/assets/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <main>
+        <div class="form-text">
+            <h1 class="account-text">you've been logged out!</h1>
+        </div>
+
+        <div class="log-out-confirmation">
+            <p style="margin:2rem 0;">log in again?</p>
+            <div class="log-btns">
+                <a href="{% url 'accounts:login' %}"><input class="btn-log-in" type="submit" name="quit" value="log in again"></a>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

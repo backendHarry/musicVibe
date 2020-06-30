@@ -1,0 +1,456 @@
+/* primary color: #D96868 */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+img{
+    width:19rem;
+    height: auto;
+}
+
+button{
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+a{
+    text-decoration:none;
+}
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    background:#101010;
+    width:95%;
+    margin:auto;
+    color:white;
+    position:relative;
+}
+/* heeader */
+header{
+    width:100%;
+    height:5rem;
+}
+
+/* logo */
+.logo-text{
+    width:8rem;
+}
+
+.logo-text h6{
+    color:#D96868;
+    font-weight:100;
+    font-size:3rem;
+    position:relative;
+}
+
+ .plus{
+    position:absolute;
+    top:0;
+    color:white;
+    right: 0;
+    font-size:1.5rem;
+    font-weight: 100;
+}
+/* end of logo */
+
+nav{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:1rem 0;
+}
+
+.nav-list{
+    width:50%;
+    height:100vh;
+    background:#D96868;
+    position:fixed;
+    top:0;
+    right:-26rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1500;
+    transition:all 0.4s ease;
+    flex-direction:column;
+    list-style: none;
+}
+
+.nav-list.active{
+    right:0;
+}
+
+.nav-item{
+    margin:1.5rem 0;
+    font-size:1.5rem;
+}
+
+.nav-item a:hover{
+    color:black;
+}
+
+
+.open{
+    cursor:pointer;
+}
+
+.close{
+    position: absolute;
+    top:1rem;
+    left:1.5rem;
+    font-size:1.5rem;
+    cursor:pointer;
+}
+
+.nav-item{
+    margin:1.5rem 0;
+}
+
+a{
+    color:white;
+}
+
+/* end of hamburger mobile menu */
+
+.search-bar{
+    background:#D96868;
+    padding:0.5rem;
+    border-radius:5rem;
+    color:white;
+}
+
+
+/* search functionality from the top */
+
+
+.show-search{
+    position:absolute;
+    top:-10rem;
+    transition:all 0.5s ease;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    height:4rem;
+    border-bottom:1px solid white;
+}
+
+.show-search.active{
+    top:0;
+} 
+
+.show-search input[type="search"]{
+    background:none;
+    font-size: 1.3rem;
+    border:none;
+    color:white;
+    width:auto;
+    outline:none;
+    height:1rem;
+    padding:0.5rem 0;
+}
+
+
+.cancel-and-btn{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:50%;
+    margin-right:2rem;
+}
+
+.show-search input[type="submit"]{
+    color:white;
+    background:#D96868;
+    width:5rem;
+    padding:0.4rem;
+    border:none;
+    overflow:hidden;
+    font-size:1rem;
+    border-radius:0.3rem;
+} 
+
+/* end of all nav */
+
+/* list items of files */
+
+.list-uploads{
+    /*display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;*/
+    margin-top:2rem;
+    text-align:center;
+}
+
+
+/* select and style button */
+
+#fileSelect{
+    background:none;
+    border:1px solid #D96868;
+    color:#D96868;
+    padding:0.2rem 1.5rem;
+    font-size:1.2rem;
+    font-weight:50;
+    display:inline;
+    outline:none;
+    transition:0.3s all ease;
+}
+
+#fileSelect:hover{
+    background:white;
+}
+
+.add{
+    font-size:1rem;
+    width:2rem;
+}
+
+.all-items{
+    margin-top:2rem;
+    list-style:none;
+    width:100%;
+}
+
+.list-item{
+    border:1px solid #D96868;
+    font-size:1.5rem;
+    padding:0.3rem 1rem;
+    width:80%;
+    margin:1rem auto;
+    background-color:#1C1919;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.list-text{
+    flex:1;
+    text-align:left;
+}
+
+.list-icon{
+    font-size:1rem;
+    
+}
+
+.fall{
+    transform: translateY(8rem) rotateZ(20deg);
+    transition:0.3s all ease;
+    opacity:0;
+}
+
+
+
+.submit-list{
+    background:#D96868;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:1.2rem;
+    padding:0.5rem;
+    width:50%;
+    margin-top:2rem;
+    letter-spacing:0.1rem;
+}
+
+.submit-list:hover{
+    background:white;
+    color:#D96868;
+}
+/* endof logo */
+
+.btn-log-in{
+    background:#D96868;
+    color:white;
+    border:none;
+    font-size:1rem;
+    padding:0.5rem;
+    border-radius:0.5rem;
+    transition:0.3s all ease-in;
+}
+
+.btn-log-in:hover{
+    color:#D96868;
+    background:white;
+}
+
+
+/* end of header */
+
+main{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items:center;
+    text-align:center;
+    margin-top:2rem;                                           
+}
+
+
+/* form  */
+
+.form-text{
+    margin-bottom:2rem;
+    border-bottom:2px solid #D96868;
+}
+
+.form-text h1{
+    font-size:2rem;
+    font-weight:100;
+}   
+
+
+.form input{
+    font-size:1.5rem;
+}
+
+.form-input{
+    background:none;
+    border:none;
+    border-bottom:1px solid white;
+    margin-top:1.5rem;
+    color:white;
+    height:2.5rem;
+    outline:none;
+}
+
+.form-input[placeholder]{
+    font-size:1.2rem;
+}
+/*form errors*/
+
+.errorlist{
+    list-style: none;
+}
+
+.errorlist li{
+    color:#D96868;
+    font-size:1.3rem;
+    font-weight:100;
+}
+
+
+.submit{
+    background:#D96868;
+    border:none;
+    font-size:1rem;
+    padding:0.5rem;
+    width:50%;
+    color:white;
+    font-weight:100;
+    margin-top:3rem;
+}
+
+.submit:hover{
+    background:white;
+    color:#D96868;
+}
+/* end */
+
+@media screen and (min-width:720px){
+    main{
+        display:flex;
+        flex-direction:column;
+    }
+
+    .form input{
+        font-size:1rem;
+        width:60%;
+    }
+
+    .form{
+        width:60%;
+    }
+
+    @media screen and (min-width:700px){
+    header{
+        height:8rem;
+    }
+
+    .nav-list{
+        width:initial;
+        height:initial;
+        background-color:transparent;
+        position:initial;
+        top:initial;
+        right:initial;
+        flex-direction:row;
+        transition:initial;
+    }
+
+    .search-bar{
+        display:none;
+    }
+
+    .search-bar i{
+        display:none;
+    }
+
+    /* for wide screen */
+
+    .search-field{
+        background:none;
+        border:1px solid #D96868;
+        font-size:1rem;
+        padding:1rem;
+        border-radius:1rem;
+        color:white;
+        outline:none;
+        height:0.5rem;
+    }
+
+    .submit-check{
+        color:white;
+        background:#D96868;
+        border:none;
+        font-size:1rem;
+        padding:0.3rem 0.6rem;
+        height:auto;
+        border-radius:0.5rem;
+        margin-left:0.5rem;
+        cursor:pointer;
+    }
+
+    .submit-check:hover{
+        color:#D96868;
+        background:white;
+    }
+
+    .menu-icons{
+        display:none;
+    }
+
+    .nav-item{
+        margin:0 2rem;
+        list-style:none;
+        position:relative;
+    }
+
+    .nav-link{
+        color:#D96868;
+        font-size:1.3rem;
+        transition:0.3s all ease;
+        font-weight:400;
+    }
+
+    .nav-link::before{
+        content:'';
+        background:#D96868;
+        width:0;
+        height:0.2rem;
+        position:absolute;
+        bottom:0;
+        left:0;
+        top:2.5rem;
+        transition: 0.3s all ease;
+         
+}
+
+}
