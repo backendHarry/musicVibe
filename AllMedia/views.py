@@ -39,7 +39,10 @@ class MusicBox(ListView):
 		query = self.request.GET.get('q')
 		if query:
 			return queryset.filter(user_for_files= self.request.user).filter(name__icontains=query)
-		return queryset.filter(user_for_files = self.request.user)
+		if self.request.user.is_authenticated:
+			return queryset.filter(user_for_files = self.request.user)
+		else:
+			redirect('accounts:register')
 
 
 class DeleteMusicView(DeleteView):
