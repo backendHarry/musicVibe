@@ -15,6 +15,4 @@ class MediaFiles(models.Model):
     def __str__(self):
         return self.name
 
-    
-
 #my model for my user files uploaded by users
