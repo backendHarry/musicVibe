@@ -8,6 +8,11 @@ class MediaFilesForm(forms.ModelForm):
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
-		self.fields['files'].widget.attrs.update({'class':'hide-me', 'id':'fileElem', 'style':'display:none;', 'multiple':True})
+		self.fields['files'].widget.attrs.update({
+                    'class':'hide-me',
+                    'id':'fileElem',
+                    'style':'display:none;',
+                    'multiple':True,
+                })
 
 #forms for saving media files from user
